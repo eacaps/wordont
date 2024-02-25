@@ -1039,7 +1039,7 @@ const dontList = computed(() => {
   width: 2rem;
 }
 .disabled {
-  color: lightgray;
+  color: var(--vt-c-text-light-2);
 }
 
 .letters {
