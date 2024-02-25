@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 
 const words = [
@@ -992,7 +992,7 @@ const c3 = ref('')
 const c4 = ref('')
 const c5 = ref('')
 
-const getRegexVal = (c) => {
+const getRegexVal = (c: string) => {
   if (c === ' ' || c === '') return '.'
   return c
 }
@@ -1028,7 +1028,7 @@ const dontList = computed(() => {
     <input class="char" v-model="c5" />
   </div>
   <div>
-    <span v-for="word in dontList" :class="word.active ? '' : 'disabled'">
+    <span v-for="word in dontList" :class="word.active ? '' : 'disabled'" :key="word.value">
       {{ word.value }}&nbsp;
     </span>
   </div>
