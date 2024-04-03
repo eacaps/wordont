@@ -1,0 +1,1 @@
+import{_ as e,o,c as t,a as s}from"./index-BYOeNbuh.js";const c={},r={class:"about"},a=s("h1",null,"i got tired of trying to remember what not to guess for wordle, so i made this",-1),n=[a];function _(i,d){return o(),t("div",r,n)}const l=e(c,[["render",_]]);export{l as default};
