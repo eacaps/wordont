@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>i got tired of trying to remember what not to guess for wordle, so i made this</h1>
   </div>
 </template>
 
