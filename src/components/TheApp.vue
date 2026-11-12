@@ -10,7 +10,6 @@ interface WordData {
 const wordData = computedAsync<WordData>(
   async () => {
     const response = await fetch("https://eacaps.github.io/wordle-words/word-list.json");
-    // const response = await fetch("sample.json");
     const json = await response.json();
     return json;
   },
@@ -29,20 +28,22 @@ const lastUpdated = computed(() => {
   return data.lastUpdated;
 })
 
-const c1 = ref('')
-const c2 = ref('')
-const c3 = ref('')
-const c4 = ref('')
-const c5 = ref('')
+const letters = ref<string[]>(['', '', '', '', ''])
 
-const getRegexVal = (c: string) => {
-  if (c === ' ' || c === '') return '.'
-  return c
+const setLetter = (index: number, event: Event) => {
+  const input = event.target as HTMLInputElement
+  // Allow only letters, keep the last typed character
+  const char = input.value.replace(/[^a-zA-Z]/g, '').slice(-1)
+  letters.value[index] = char
+  input.value = char
 }
+
+// Only a single letter reaches the RegExp; anything else is a wildcard
+const getRegexVal = (c: string) => (/^[a-zA-Z]$/.test(c) ? c : '.')
 
 const regex = computed(() => {
   const regex = new RegExp(
-    `${getRegexVal(c1.value)}${getRegexVal(c2.value)}${getRegexVal(c3.value)}${getRegexVal(c4.value)}${getRegexVal(c5.value)}`,
+    letters.value.map(getRegexVal).join(''),
     'i'
   )
   return regex
@@ -68,11 +69,17 @@ const dontList = computed(() => {
         <h5 v-if="lastUpdated" class="disabled">&nbsp;as of {{ lastUpdated }}</h5>
     </div>
     <div class="letters">
-        <input class="char" v-model="c1" />
-        <input class="char" v-model="c2" />
-        <input class="char" v-model="c3" />
-        <input class="char" v-model="c4" />
-        <input class="char" v-model="c5" />
+        <input
+          v-for="(letter, index) in letters"
+          :key="index"
+          class="char"
+          type="text"
+          maxlength="1"
+          autocomplete="off"
+          :aria-label="`Letter ${index + 1}`"
+          :value="letter"
+          @input="setLetter(index, $event)"
+        />
     </div>
     <div>
         <span v-for="word in dontList" :class="word.active ? '' : 'disabled'" :key="word.value">
@@ -88,7 +95,7 @@ const dontList = computed(() => {
 }
 
 .disabled {
-  color: var(--vt-c-text-light-2);
+  color: #888;
 }
 
 .letters {
