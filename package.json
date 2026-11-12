@@ -12,9 +12,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write src/",
-    "format:check": "prettier --check src/",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "format:check": "prettier --check src/"
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
@@ -30,7 +28,6 @@
     "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-vue": "~10.12.1",
-    "gh-pages": "^6.3.0",
     "jiti": "^2.7.0",
     "npm-run-all2": "^9.0.4",
     "prettier": "^3.10.1",
