@@ -23,8 +23,9 @@ The word list is fetched at runtime from <https://eacaps.github.io/wordle-words/
 | `npm run lint:fix` | Run ESLint and apply fixes |
 | `npm run format` | Format `src/` with Prettier |
 | `npm run format:check` | Check `src/` formatting without writing |
-| `npm run deploy` | Build and publish `dist/` to GitHub Pages |
+
 
 ## Deploy
 
-The site is published with `gh-pages` (`npm run deploy`, which runs a build first). Vite is configured with `base: "/wordont/"` in `vite.config.ts`, so the app is served from `/wordont/`.
+
+The site is deployed to GitHub Pages automatically by `.github/workflows/deploy.yml` on every push to `main`. Pull requests are checked by `.github/workflows/ci.yml` first. Vite is configured with `base: "/wordont/"` in `vite.config.ts`, so the app is served from `/wordont/`.
