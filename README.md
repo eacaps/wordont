@@ -15,12 +15,14 @@ The word list is fetched at runtime from <https://eacaps.github.io/wordle-words/
 | Script | Description |
 | --- | --- |
 | `npm install` | Install dependencies |
-| `npm start` | Start the Vite dev server |
+| `npm run dev` | Start the Vite dev server |
 | `npm run build` | Type-check and build to `dist/` |
 | `npm run preview` | Preview the production build |
 | `npm run type-check` | Run `vue-tsc` |
-| `npm run lint` | Run ESLint (note: runs with `--fix`) |
+| `npm run lint` | Run ESLint (check only) |
+| `npm run lint:fix` | Run ESLint and apply fixes |
 | `npm run format` | Format `src/` with Prettier |
+| `npm run format:check` | Check `src/` formatting without writing |
 | `npm run deploy` | Build and publish `dist/` to GitHub Pages |
 
 ## Deploy
