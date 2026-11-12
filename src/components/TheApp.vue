@@ -89,7 +89,7 @@ const dontList = computed(() => {
 }
 
 .disabled {
-  color: #888;
+  color: var(--color-text-muted);
 }
 
 .letters {
